@@ -21,7 +21,7 @@
 int main(int argc, const char * argv[]) {
 
     //Input size
-    int n = 100;
+    int n = 107;
 
     //Create random array of ints
     std::vector<int> arr;

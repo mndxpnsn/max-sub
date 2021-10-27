@@ -32,14 +32,6 @@ int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
         return arr[i];
     }
 
-    if(j - i == 1) {
-        memo_table[i][j].is_set = true;
-        memo_table[i][j].val = result;
-        int val = max(arr[i], arr[j]);
-        val = max(val, arr[i] + arr[j]);
-        return val;
-    }
-
     //Compute upper sum
     int upper_sum = 0;
     for(int it = i; it <= j; ++it) {
@@ -48,7 +40,7 @@ int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
     }
 
     //Compute max subarray
-    for(int k = i + 1; k < j; ++k) {
+    for(int k = i; k < j; ++k) {
         int sum1 = max_subarr_dp(arr, i, k, memo_table);
         int sum2 = max_subarr_dp(arr, k + 1, j, memo_table);
         int max_sum_loc = max(sum1, sum2);
