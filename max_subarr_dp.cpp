@@ -15,6 +15,7 @@
 #include "support.hpp"
 #include "user_types.hpp"
 
+
 int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
     int result = 0;
 
@@ -33,7 +34,7 @@ int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
     }
 
     //Compute max subarray
-    for(int k = i + 0; k < j; ++k) {
+    for(int k = i + 1; k < j; ++k) {
         int sum1 = max_subarr_dp(arr, i, k, memo_table);
         int sum2 = max_subarr_dp(arr, k + 1, j, memo_table);
         int max_sum_loc = max(sum1, sum2);
@@ -41,7 +42,17 @@ int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
         if(max_sum_loc > result) { result = max_sum_loc; }
     }
 
+    memo_table[i][j].is_set = true;
+    memo_table[i][j].val = result;
+
     return result;
 }
 
+int max_subarray_dp_wrap(std::vector<int>& arr, m_table** memo_table) {
 
+    int n = (int) arr.size();
+
+    int result = max_subarr_dp(arr, 0, n - 1, memo_table);
+
+    return result;
+}

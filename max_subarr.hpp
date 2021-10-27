@@ -11,7 +11,8 @@
 
 #include <vector>
 
-std::vector<int> max_subarray(std::vector<int>& arr);
-
+std::vector<int> max_subarray_dc(std::vector<int>& arr);
+std::vector<int> max_subarray_kad(std::vector<int>& arr);
+std::vector<int> max_subarray_dp(std::vector<int>& arr);
 
 #endif /* MAX_SUBARR_HPP_ */

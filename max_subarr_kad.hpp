@@ -10,7 +10,7 @@
 
 #include <vector>
 
-int max_subarr_ref(std::vector<int>& arr);
+int max_subarr_kd(std::vector<int>& arr);
 
 
 #endif /* MAX_SUBARR_KAD_HPP_ */

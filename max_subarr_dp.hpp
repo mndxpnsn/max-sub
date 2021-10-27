@@ -14,6 +14,6 @@
 #include "user_types.hpp"
 
 int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table);
-
+int max_subarray_dp_wrap(std::vector<int>& arr, m_table** memo_table);
 
 #endif /* MAX_SUBARR_DP_HPP_ */

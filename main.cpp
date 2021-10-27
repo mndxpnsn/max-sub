@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <time.h>
 #include <string>
 
 #include "max_subarr.hpp"
@@ -19,62 +20,29 @@
 
 int main(int argc, const char * argv[]) {
 
-	std::vector< std::vector<int> > results_arr;
+    //Input size
+    int n = 100;
 
-    std::ifstream input_file;
-    input_file.open("data.txt");
-
-    int t = 0;
-    int n = 0;
-
-    if (!input_file.is_open()) {
-        std::cout << "Could not open the file" << std::endl;
+    //Create random array of ints
+    std::vector<int> arr;
+    srand((unsigned) time(NULL));
+    for(int i = 0; i < n; ++i) {
+        int val = rand() % n - n / 2;
+        arr.push_back(val);
     }
 
-    input_file >> t;
+    //Compute maximum subarray and subsequence
+    std::vector<int> results_dc = max_subarray_dc(arr);
+    std::vector<int> results_kad = max_subarray_kad(arr);
+    std::vector<int> results_dp = max_subarray_dp(arr);
 
-    for(int tc = 0; tc < t; ++tc) {
-        input_file >> n;
-        std::vector<int> arr_loc;
-        for(int i = 0; i < n; ++i) {
-        	int val;
-        	input_file >> val;
-        	arr_loc.push_back(val);
-        }
-
-        std::vector<int> results = max_subarray(arr_loc);
-        results_arr.push_back(results);
-    }
-
-    input_file.close();
-
-    std::vector< std::vector<int> > results_ref_arr;
-    std::ifstream results_ref;
-    results_ref.open("results_ref.txt");
-
-    if (!results_ref.is_open()) {
-        std::cout << "Could not open the file" << std::endl;
-    }
-
-    for(int tc = 0; tc < t; ++tc) {
-    	std::vector<int> results_ref_elem;
-    	int val1, val2;
-    	results_ref >> val1;
-    	results_ref >> val2;
-    	results_ref_elem.push_back(val1);
-    	results_ref_elem.push_back(val2);
-    	results_ref_arr.push_back(results_ref_elem);
-    }
-
-    results_ref.close();
-
-    for(int tc = 0; tc < t; ++tc) {
-		std::cout << "max subarray: " << results_arr[tc][0] << ", ";
-		std::cout << "max subsequence: " << results_arr[tc][1] << std::endl;
-		std::cout << "max subarray: " << results_ref_arr[tc][0] << ", ";
-		std::cout << "max subsequence: " << results_ref_arr[tc][1] << std::endl;
-
-    }
+    //Print results
+    std::cout << "maximum subarray divide and conquer: " << results_dc[0] << std::endl;
+    std::cout << "maximum subsequence: " << results_dc[1] << std::endl;
+    std::cout << "maximum subarray kadane: " << results_dc[0] << std::endl;
+    std::cout << "maximum subsequence: " << results_dc[1] << std::endl;
+    std::cout << "maximum subarray dynamic programming: " << results_dp[0] << std::endl;
+    std::cout << "maximum subsequence: " << results_dp[1] << std::endl;
 
     std::cout << "done" << std::endl;
 
