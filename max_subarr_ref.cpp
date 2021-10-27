@@ -14,12 +14,15 @@
 
 #include "support.hpp"
 
+int num_ops_dc = 0;
+
 int max_subarray_mid(std::vector<int>& arr, int i, int k, int j) {
     int result = -3e+8;
 
     int sum = 0;
     int left_sum = -3e+8;
     for(int q = k; q > i - 1; --q) {
+        num_ops_dc++;
         sum = sum + arr[q];
         if(sum > left_sum) {
             left_sum = sum;
@@ -29,6 +32,7 @@ int max_subarray_mid(std::vector<int>& arr, int i, int k, int j) {
     sum = 0;
     int right_sum = -3e+8;
     for(int q = k + 1; q <= j; ++q) {
+        num_ops_dc++;
         sum = sum + arr[q];
         if(sum > right_sum) {
             right_sum = sum;
