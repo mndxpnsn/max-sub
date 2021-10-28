@@ -16,13 +16,13 @@
 #include "user_types.hpp"
 
 int num_ops_dp = 0;
-int num_ops_dp_saved = 0;
 
 int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
     int result = 0;
 
+    num_ops_dp++;
+
     if(memo_table[i][j].is_set == true) {
-        num_ops_dp_saved++;
         return memo_table[i][j].val;
     }
 
@@ -35,7 +35,6 @@ int max_subarr_dp(std::vector<int>& arr, int i, int j, m_table** memo_table) {
     //Compute upper sum
     int upper_sum = 0;
     for(int it = i; it <= j; ++it) {
-        num_ops_dp++;
         upper_sum = upper_sum + arr[it];
     }
 

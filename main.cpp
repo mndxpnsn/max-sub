@@ -43,12 +43,12 @@ int main(int argc, const char * argv[]) {
     std::cout << "maximum subsequence: " << results_kad[1] << std::endl;
     std::cout << "maximum subarray dynamic programming: " << results_dp[0] << std::endl;
     std::cout << "maximum subsequence: " << results_dp[1] << std::endl;
+    std::cout << std::endl;
 
     std::cout << "number of operations:" << std::endl;
     std::cout << "number of operations dynamic programming: " << num_ops_dp << std::endl;
     std::cout << "number of operations divide and conquer: " << num_ops_dc << std::endl;
     std::cout << "number of operations kadane's algorithm: " << num_ops_kad << std::endl;
-    std::cout << "number of operations saved: " << num_ops_dp_saved << std::endl;
     std::cout << "done" << std::endl;
 
     return 0;

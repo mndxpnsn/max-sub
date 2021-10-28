@@ -9,7 +9,6 @@
 #define USER_TYPES_HPP_
 
 
-extern int num_ops_dp_saved;
 extern int num_ops_dp;
 extern int num_ops_dc;
 extern int num_ops_kad;
