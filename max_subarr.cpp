@@ -113,5 +113,8 @@ std::vector<int> max_subarray_dp(std::vector<int>& arr) {
     result.push_back(max_suba);
     result.push_back(max_subs);
 
+    //Free memo table
+    free_memo_table(memo_table, n);
+
     return result;
 }
